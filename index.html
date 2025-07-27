@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Signup/Login</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .glass-container {
+      background: gray;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      text-align: center;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #3aa856;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    a {
+      display: block;
+      margin-top: 10px;
+      color: #3aa856;
+      text-decoration: none;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+
+  <!-- SIGNUP FORM -->
+  <div id="signupForm">
+    <h2>Sign Up</h2>
+    <input type="text" placeholder="Full Name" required><br>
+    <input type="email" placeholder="Email" required><br>
+    <input type="password" placeholder="Password" required><br>
+    <button onclick="goToLogin()">Sign Up</button>
+    <a href="#" onclick="showLogin()">Already have an account? Login</a>
+  </div>
+
+  <!-- LOGIN FORM -->
+  <div id="loginForm" class="hidden">
+    <h2>Login</h2>
+    <input type="email" placeholder="Email" required><br>
+    <input type="password" placeholder="Password" required><br>
+    <button onclick="goToHome()">Login</button>
+    <a href="#" onclick="showForgot()">Forgot Password?</a>
+    <a href="#" onclick="showSignup()">Don't have an account? Sign Up</a>
+  </div>
+
+  <!-- FORGOT PASSWORD FORM -->
+  <div id="forgotForm" class="hidden">
+    <h2>Forgot Password</h2>
+    <input type="email" placeholder="Enter your email" required><br>
+    <button onclick="alert('Password reset link sent')">Send Link</button>
+    <a href="#" onclick="showLogin()">Back to Login</a>
+  </div>
+
+</div>
+
+<script>
+  function showLogin() {
+    document.getElementById('signupForm').classList.add('hidden');
+    document.getElementById('loginForm').classList.remove('hidden');
+    document.getElementById('forgotForm').classList.add('hidden');
+  }
+
+  function showSignup() {
+    document.getElementById('signupForm').classList.remove('hidden');
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('forgotForm').classList.add('hidden');
+  }
+
+  function showForgot() {
+    document.getElementById('signupForm').classList.add('hidden');
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('forgotForm').classList.remove('hidden');
+  }
+
+  function goToLogin() {
+    const name = document.querySelector('#signupForm input[type="text"]').value;
+    const email = document.querySelector('#signupForm input[type="email"]').value;
+    const password = document.querySelector('#signupForm input[type="password"]').value;
+
+    if (email && password) {
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userPassword', password);
+      alert("Signup successful!");
+      showLogin();
+    } else {
+      alert("Please fill out all fields.");
+    }
+  }
+
+  function goToHome() {
+    const email = document.querySelector('#loginForm input[type="email"]').value;
+    const password = document.querySelector('#loginForm input[type="password"]').value;
+
+    const savedEmail = localStorage.getItem('userEmail');
+    const savedPassword = localStorage.getItem('userPassword');
+
+    if (email === savedEmail && password === savedPassword) {
+      alert("Login successful!");
+      window.location.href = "main.html"; // Pwede mong palitan kung may ibang home page ka
+    } else {
+      alert("Invalid email or password.");
+    }
+  }
+</script>
+
+</body>
+</html>

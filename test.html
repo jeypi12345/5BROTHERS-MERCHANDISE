@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anime Store with Cart</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #8023b8, #1e003e);
+      font-family: Arial, sans-serif;
+      color: white;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    #cart-link {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      background: white;
+      color: black;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 16px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    img {
+      width: 80px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .btn {
+      padding: 8px 14px;
+      margin: 4px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .buy {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .cart {
+      background-color: #f39c12;
+      color: white;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+
+<a href="test1.html" id="cart-link">Cart</a>
+
+<center>
+  <img src="UA.logo.webp" alt="Store Logo">
+</center>
+
+<h1>Anime Store</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Anime Title</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="curry.jpg" alt="Stephen Curry Shoes"></td>
+      <td>Stephen Curry Shoes</td>
+      <td>₱9999</td>
+      <td>
+        <a href="checkout.html"><button class="btn buy">Buy</button></a>
+        <button class="btn cart" onclick="addToCart('Stephen Curry Shoes', 9999, 'curry.jpg')">Add to Cart</button>
+      </td>
+    </tr>
+    <tr>
+      <td><img src="fox.jpg" alt="De'Aaron Fox Shoes"></td>
+      <td>De'Aaron Fox</td>
+      <td>₱9500</td>
+      <td>
+        <a href="checkout.html"><button class="btn buy">Buy</button></a>
+        <button class="btn cart" onclick="addToCart('De Aaron Fox', 9500, 'fox.jpg')">Add to Cart</button>
+      </td>
+    </tr>
+    <tr>
+      <td><img src="mitchell.jpg" alt="Donovan Mitchell Shoes"></td>
+      <td>Donovan Mitchell</td>
+      <td>₱3990</td>
+      <td>
+        <a href="checkout.html"><button class="btn buy">Buy</button></a>
+        <button class="btn cart" onclick="addToCart('Donovan Mitchell', 3990, 'mitchell.jpg')">Add to Cart</button>
+      </td>
+    </tr>
+    <tr>
+      <td><img src="embiid.jpg" alt="Joel Embiid Shoes"></td>
+      <td>Joel Embiid</td>
+      <td>₱3990</td>
+      <td>
+        <a href="checkout.html"><button class="btn buy">Buy</button></a>
+        <button class="btn cart" onclick="addToCart('Joel Embiid', 3990, 'embiid.jpg')">Add to Cart</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  function addToCart(name, price, image) {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({ name, price: Number(price), image });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${name} added to cart!`);
+  }
+</script>
+
+</body>
+</html>

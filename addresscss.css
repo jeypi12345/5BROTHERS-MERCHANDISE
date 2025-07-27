@@ -1,0 +1,73 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 20px;
+}
+
+.address-container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+.address-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.address-card {
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #fff;
+  transition: border 0.3s, background 0.3s;
+}
+
+.address-card:hover {
+  border-color: #e4002b;
+}
+
+.address-card.selected {
+  border-color: #e4002b;
+  background-color: #fff5f6;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.details, .phone {
+  color: #555;
+  margin-top: 3px;
+}
+
+.deliver-btn {
+  margin-top: 25px;
+  width: 100%;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: #e4002b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.deliver-btn:hover {
+  background: #c10023;
+}

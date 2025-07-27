@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Address</title>
+  <link rel="stylesheet" href="address.css">
+</head>
+<body>
+  <div class="address-container">
+    <h1>Select Delivery Address</h1>
+
+    <div class="address-list">
+
+      <div class="address-card" onclick="selectAddress(this)">
+        <p class="name">Isaac Castro</p>
+        <p class="details">Munoz East, Roxas, Isabela</p>
+        <p class="phone">+63 912 345 6789</p>
+      </div>
+
+      <div class="address-card" onclick="selectAddress(this)">
+        <p class="name">Jane Santos</p>
+        <p class="details">Blk 23 Lot 4, Makati City, NCR</p>
+        <p class="phone">+63 933 456 7890</p>
+      </div>
+
+      <div class="address-card" onclick="selectAddress(this)">
+        <p class="name">Mark Reyes</p>
+        <p class="details">Purok 5, San Mateo, Isabela</p>
+        <p class="phone">+63 945 678 9012</p>
+      </div>
+
+    </div>
+
+    <button class="deliver-btn" onclick="proceed()">Deliver Here</button>
+  </div>
+
+  <script>
+    function selectAddress(card) {
+      const all = document.querySelectorAll(".address-card");
+      all.forEach(addr => addr.classList.remove("selected"));
+      card.classList.add("selected");
+    }
+
+    function proceed() {
+      const selected = document.querySelector(".address-card.selected");
+      if (!selected) {
+        alert("Please select an address first.");
+        return;
+      }
+      const name = selected.querySelector(".name").textContent;
+      const details = selected.querySelector(".details").textContent;
+      const phone = selected.querySelector(".phone").textContent;
+
+      // You can redirect to checkout and pass the selected address
+      alert(`Selected:\n${name}\n${details}\n${phone}`);
+      // window.location.href = `checkout.html?address=${encodeURIComponent(details)}&name=${encodeURIComponent(name)}`;
+    }
+  </script>
+</body>
+</html>
